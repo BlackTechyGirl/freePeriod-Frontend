@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="container">
+      <form action="">
+        <h1 class="logo">FreePeriod</h1>
+        <input
+          id="lastPeriodDate"
+          type="date"
+          placeholder="Last Period Date"
+          required
+        /><br />
+        <input
+          id="cycleLength"
+          type="number"
+          placeholder="Cycle Length"
+          required
+          min="1"
+        /><br />
+        <input
+          id="flowLength"
+          type="number"
+          placeholder="Flow Length"
+          required
+          min="1"
+        /><br />
+        <button type="button" id="calculateButton">
+          <a href="calender.html">Calculate</a>
+        </button>
+      </form>
+    </div>
+    <script>
+      const form = document.querySelector("form");
+      const lastPeriodDate = document.querySelector("#lastPeriodDate");
+      const cycleLength = document.querySelector("#cycleLength");
+      const flowLength = document.querySelector("#flowLength");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!lastPeriodDate.value) {
+          alert("Please enter the Last Period Date");
+          return;
+        }
+
+        if (!cycleLength.value || cycleLength.value < 1) {
+          alert("Please enter a valid Cycle Length");
+          return;
+        }
+
+        if (!flowLength.value || flowLength.value < 1) {
+          alert("Please enter a valid Flow Length");
+          return;
+        }
+
+        form.submit();
+      });
+    </script>
+    <script src="menstrualCycleDates.js"></script>
+  </body>
+</html>
